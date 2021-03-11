@@ -2,6 +2,14 @@
 
 const table = document.getElementById("myTable");
 
+let updateID = 0;
+
+var myModal = new bootstrap.Modal(document.getElementById('exampleModalLong'), {
+  keyboard: false
+})
+
+
+
 function getSpecimens(){
     axios.get("http://localhost:8080/getSpecimens")
     .then (res => {
@@ -45,7 +53,6 @@ function renderSpecimen(specimen){
   deleteSpecimenButton.type = "button"
   deleteSpecimenButton.id = "deleteButton"
   deleteSpecimenButton.className = "btn btn-danger";
-  deleteSpecimenButton.attachShadow;
   deleteSpecimenButton.innerHTML = "x";
   deleteSpecimenButton.addEventListener('click', function () {
     deleteSpecimen(specimen.id);
@@ -56,9 +63,9 @@ function renderSpecimen(specimen){
   const updateSpecimenButton = document.createElement("button");
   updateSpecimenButton.className = "btn btn-light";
   updateSpecimenButton.innerHTML = "Update";
-  updateSpecimenButton.addEventListener('click', function () {
-    updateSpecimen(specimen.id);
-  });
+  updateSpecimenButton.addEventListener('click', function(){
+      openModal(specimen.id);
+  })
   newRow.appendChild(updateSpecimenButton);
 }
 
@@ -68,6 +75,7 @@ function deleteSpecimen(id) {
     .then(() => getSpecimens())
     .catch(err => console.error(err));
 }
+
 
 // create function
 
@@ -94,6 +102,52 @@ document.getElementById("specimenForm").addEventListener('submit', function(even
     .catch(err => console.error(err));
 
   });
+
+
+  // modal functions
+  function openModal(id) {
+    updateID = id;
+    myModal.show();
+    console.log(updateID);
+  }
+
+  function closeModal() {
+    myModal.hide();
+  }
+
+  document.getElementById("modalclose1").addEventListener('click', function(){
+    closeModal();
+  })
+
+  document.getElementById("modalclose2").addEventListener('click', function(){
+    closeModal();
+  })
+
+  
+
+  // update specimen function
+  document.getElementById("updateForm").addEventListener('submit', function(event){
+    event.preventDefault;
+
+
+
+    const newData = {
+      latinName: this.newLatinName.value,
+      origin: this.newOrigin.value,
+      storageLocation: this.newStorageLocation.value,
+      arrivalDate: this.newArrivalDate.value,
+      description: this.newDescription.value
+    }
+
+    axios.put("http://localhost:8080/updateSpecimen/" + updateID, newData)
+    .then(() => {
+        getSpecimens();
+    })
+    .catch(err => console.error(err));
+  })
+
+
+
 
 
 
