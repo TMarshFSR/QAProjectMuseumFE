@@ -135,7 +135,7 @@ document.getElementById("specimenForm").addEventListener('submit', function(even
       latinName: this.newLatinName.value,
       origin: this.newOrigin.value,
       storageLocation: this.newStorageLocation.value,
-      arrivalDate: this.newArrivalDate.value,
+      dateArrived: this.newArrivalDate.value,
       description: this.newDescription.value
     }
 
