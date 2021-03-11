@@ -129,8 +129,6 @@ document.getElementById("specimenForm").addEventListener('submit', function(even
   document.getElementById("updateForm").addEventListener('submit', function(event){
     event.preventDefault;
 
-
-
     const newData = {
       latinName: this.newLatinName.value,
       origin: this.newOrigin.value,

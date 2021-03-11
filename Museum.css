@@ -1,10 +1,14 @@
 body {
-    background-color: gray;
-  }
-  h1, h2 {
+    background-image: url("Resources/887984.jpg");
+    background-color: #cccccc;
+    background-size: cover;
+    background-attachment: fixed;
+   }
+
+  h1, h2, h3 {
     color: rgb(0, 0, 0);
     margin-left: 20px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:Georgia, 'Times New Roman', Times, serif;
   }
 
   
@@ -14,3 +18,17 @@ body {
    background-color:rgb(238, 238, 238);
    padding: 10px;
  }
+
+ #formSubmit {
+   padding: 5px;
+ }
+ 
+ #formReset{
+   padding: 5px;
+ }
+
+ label {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+
+ }
+
