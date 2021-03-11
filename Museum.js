@@ -6,6 +6,7 @@ function getSpecimens(){
     axios.get("http://localhost:8080/getSpecimens")
     .then (res => {
         const specimens = res.data;
+    table.innerHTML="";
 
         specimens.forEach(specimen => {
             const newSpecimen = renderSpecimen(specimen);
@@ -13,6 +14,8 @@ function getSpecimens(){
         });
     }).catch(err => console.error(err))
 }
+
+// render specimen function
 
 function renderSpecimen(specimen){
 
@@ -37,6 +40,7 @@ function renderSpecimen(specimen){
     const cell6 = newRow.insertCell();
     cell6.innerHTML = specimen.description;
 
+    // delete button
     const deleteSpecimenButton = document.createElement("button");
   deleteSpecimenButton.className = "card-link";
   deleteSpecimenButton.attachShadow;
@@ -46,6 +50,7 @@ function renderSpecimen(specimen){
   });
   newRow.appendChild(deleteSpecimenButton);
 
+  // update button
   const updateSpecimenButton = document.createElement("button");
   updateSpecimenButton.className = "card-link";
   updateSpecimenButton.innerHTML = "Update";
@@ -53,7 +58,15 @@ function renderSpecimen(specimen){
     updateSpecimen(specimen.id);
   });
   newRow.appendChild(updateSpecimenButton);
-
 }
+
+// delete function
+function deleteSpecimen(id) {
+    axios.delete("http://localhost:8080/removeSpecimen/" + id)
+    .then(() => getSpecimens())
+    .catch(err => console.error(err));
+}
+
+
 
 getSpecimens();
