@@ -36,6 +36,24 @@ function renderSpecimen(specimen){
 
     const cell6 = newRow.insertCell();
     cell6.innerHTML = specimen.description;
+
+    const deleteSpecimenButton = document.createElement("button");
+  deleteSpecimenButton.className = "card-link";
+  deleteSpecimenButton.attachShadow;
+  deleteSpecimenButton.innerHTML = "x";
+  deleteSpecimenButton.addEventListener('click', function () {
+    deleteSpecimen(specimen.id);
+  });
+  newRow.appendChild(deleteSpecimenButton);
+
+  const updateSpecimenButton = document.createElement("button");
+  updateSpecimenButton.className = "card-link";
+  updateSpecimenButton.innerHTML = "Update";
+  updateSpecimenButton.addEventListener('click', function () {
+    updateSpecimen(specimen.id);
+  });
+  newRow.appendChild(updateSpecimenButton);
+
 }
 
 getSpecimens();
