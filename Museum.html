@@ -8,14 +8,21 @@
     <title>Document</title>
 </head>
 <body>
-<div class="container">
+
+  <!-- <div class="container-fluid">
+    <h2>Width</h2>
+         <div class = "w-auto p-3" style = "background-color: #aaa;">
+            Width : auto
+         </div>
+
+
+  </div> -->
+
+<div class="container-md">
   <div class="row">
-    <div class="col-sm-1">
-      One of three columns
-    </div>
-    <div class="col-md-8">
+    <div class="col-md-8" style = "background-color:thistle">
       <h1>Specimen Log</h1>
-      <table class="table table-success table-hover table-striped table-sm" >
+      <table class="table table-dark table-hover table-striped table-sm" >
           <thead>
             <tr>
               <th scope="col">#id</th>
@@ -30,10 +37,24 @@
           </tbody>
         </table>
     </div>
-    <div class="col-sm-1">
-      One of three columns
+    <div class="col-md-4" style = "background-color:thistle;";>
+      <form id="specimenForm">
+        <label for="latinName">Species(Latin): </label>
+        <input name="name" id="latinName" class="form-control" autofocus required>
+        <label for="origin" class="form-label">Origin:</label>
+        <input name="origin" id="origin" class="form-control" required>
+        <label for="storageLocation" class="form-label">Storage Location: </label>
+        <input name="storageLocation" id="storageLocation" class="form-control">
+        <label for="dateArrived" class="form-label">Date Received: </label>
+        <input type="date" name="dateArrived" id="dateArrived" class="form-control">
+        <label for="description" class="form-label">Description (Max 200 Characters): </label>
+        <input name="description" id="description" class="form-control">
+        <button type="reset" class="btn btn-light">Reset</button>
+        <button type="submit" class="btn btn-light">Submit</button>
+    </form>
     </div>
   </div>
+
 </div>
 
     

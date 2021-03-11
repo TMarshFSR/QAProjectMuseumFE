@@ -42,7 +42,9 @@ function renderSpecimen(specimen){
 
     // delete button
     const deleteSpecimenButton = document.createElement("button");
-  deleteSpecimenButton.className = "card-link";
+  deleteSpecimenButton.type = "button"
+  deleteSpecimenButton.id = "deleteButton"
+  deleteSpecimenButton.className = "btn btn-danger";
   deleteSpecimenButton.attachShadow;
   deleteSpecimenButton.innerHTML = "x";
   deleteSpecimenButton.addEventListener('click', function () {
@@ -52,7 +54,7 @@ function renderSpecimen(specimen){
 
   // update button
   const updateSpecimenButton = document.createElement("button");
-  updateSpecimenButton.className = "card-link";
+  updateSpecimenButton.className = "btn btn-light";
   updateSpecimenButton.innerHTML = "Update";
   updateSpecimenButton.addEventListener('click', function () {
     updateSpecimen(specimen.id);
@@ -66,6 +68,32 @@ function deleteSpecimen(id) {
     .then(() => getSpecimens())
     .catch(err => console.error(err));
 }
+
+// create function
+
+document.getElementById("specimenForm").addEventListener('submit', function(event){
+    event.preventDefault();
+    const data = {
+      latinName: this.latinName.value,
+      origin: this.origin.value,
+      storageLocation: this.storageLocation.value,
+      dateArrived: this.dateArrived.value,
+      description: this.description.value,
+    };
+
+    axios.post("http://localhost:8080/createSpecimen", data, {
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    }).then(() => {
+      this.reset();
+      this.latinName.focus();
+      getSpecimens();
+    })
+    .catch(err => console.error(err));
+
+  });
 
 
 
