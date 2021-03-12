@@ -52,17 +52,18 @@ function renderSpecimen(specimen){
     const deleteSpecimenButton = document.createElement("button");
   deleteSpecimenButton.type = "button"
   deleteSpecimenButton.id = "deleteButton"
-  deleteSpecimenButton.className = "btn btn-danger";
-  deleteSpecimenButton.innerHTML = "x";
+  deleteSpecimenButton.className = "btn btn-primary";
+  deleteSpecimenButton.innerHTML = '<img src="Resources/delete-24px.svg"></img>';
   deleteSpecimenButton.addEventListener('click', function () {
     deleteSpecimen(specimen.id);
   });
-  newRow.appendChild(deleteSpecimenButton);
+  newRow.append(deleteSpecimenButton);
 
   // update button
   const updateSpecimenButton = document.createElement("button");
-  updateSpecimenButton.className = "btn btn-light";
-  updateSpecimenButton.innerHTML = "Update";
+  updateSpecimenButton.id = "updateButton";
+  updateSpecimenButton.className = "btn btn-primary";
+  updateSpecimenButton.innerHTML = '<img src="Resources/arrow_circle_up-24px.svg"></img>';
   updateSpecimenButton.addEventListener('click', function(){
       openModal(specimen.id);
   })
