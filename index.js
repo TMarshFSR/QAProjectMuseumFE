@@ -2,6 +2,8 @@
 
 const table = document.getElementById("myTable");
 
+const indexPage = "http://localhost:8080/";
+
 let updateID = 0;
 
 var myModal = new bootstrap.Modal(document.getElementById('exampleModalLong'), {
@@ -11,7 +13,7 @@ var myModal = new bootstrap.Modal(document.getElementById('exampleModalLong'), {
 
 
 function getSpecimens(){
-    axios.get("http://localhost:8080/getSpecimens")
+    axios.get(indexPage + "getSpecimens")
     .then (res => {
         const specimens = res.data;
     table.innerHTML="";
@@ -52,17 +54,18 @@ function renderSpecimen(specimen){
     const deleteSpecimenButton = document.createElement("button");
   deleteSpecimenButton.type = "button"
   deleteSpecimenButton.id = "deleteButton"
-  deleteSpecimenButton.className = "btn btn-danger";
-  deleteSpecimenButton.innerHTML = "x";
+  deleteSpecimenButton.className = "btn btn-primary";
+  deleteSpecimenButton.innerHTML = '<img src="Resources/delete-24px.svg"></img>';
   deleteSpecimenButton.addEventListener('click', function () {
     deleteSpecimen(specimen.id);
   });
-  newRow.appendChild(deleteSpecimenButton);
+  newRow.append(deleteSpecimenButton);
 
   // update button
   const updateSpecimenButton = document.createElement("button");
-  updateSpecimenButton.className = "btn btn-light";
-  updateSpecimenButton.innerHTML = "Update";
+  updateSpecimenButton.id = "updateButton";
+  updateSpecimenButton.className = "btn btn-primary";
+  updateSpecimenButton.innerHTML = '<img src="Resources/arrow_circle_up-24px.svg"></img>';
   updateSpecimenButton.addEventListener('click', function(){
       openModal(specimen.id);
   })
@@ -71,7 +74,7 @@ function renderSpecimen(specimen){
 
 // delete function
 function deleteSpecimen(id) {
-    axios.delete("http://localhost:8080/removeSpecimen/" + id)
+    axios.delete(indexPage + "removeSpecimen/" + id)
     .then(() => getSpecimens())
     .catch(err => console.error(err));
 }
@@ -89,7 +92,7 @@ document.getElementById("specimenForm").addEventListener('submit', function(even
       description: this.description.value,
     };
 
-    axios.post("http://localhost:8080/createSpecimen", data, {
+    axios.post(indexPage + "createSpecimen", data, {
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
@@ -129,8 +132,6 @@ document.getElementById("specimenForm").addEventListener('submit', function(even
   document.getElementById("updateForm").addEventListener('submit', function(event){
     event.preventDefault;
 
-
-
     const newData = {
       latinName: this.newLatinName.value,
       origin: this.newOrigin.value,
@@ -139,7 +140,7 @@ document.getElementById("specimenForm").addEventListener('submit', function(even
       description: this.newDescription.value
     }
 
-    axios.put("http://localhost:8080/updateSpecimen/" + updateID, newData)
+    axios.put(indexPage + "updateSpecimen/" + updateID, newData)
     .then(() => {
         getSpecimens();
     })

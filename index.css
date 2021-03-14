@@ -1,0 +1,67 @@
+body {
+    background-color: #cccccc;
+    background-size: cover;
+    background-attachment: fixed;
+   }
+
+  h1, h2, h3 {
+    color: rgb(0, 0, 0);
+    margin-left: 20px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    padding-bottom: 10px;
+  }
+
+  
+
+ #specimenForm {
+   color: black;
+   background-color:rgb(238, 238, 238);
+   padding: 10px;
+ }
+
+ #formSubmit {
+   padding: 5px;
+ }
+ 
+ #formReset{
+   padding: 5px;
+ }
+
+ label {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+ }
+
+#deleteButton{ 
+  color: #ffffff; 
+  background-color: rgba(250, 233, 165, 0.5) !important; 
+  border-color: rgba(250, 233, 165, 0.5) !important;
+  width: 35px;
+  padding: 3px;
+  margin: 3px;
+} 
+
+#updateButton { 
+  color: #ffffff;
+  background:  rgba(250, 233, 165, 0.5) !important; 
+  border-color:  rgba(250, 233, 165, 0.5) !important; 
+  width: 35px;
+  padding: 3px;
+} 
+
+#SpecimenLog { 
+    box-shadow: 2px 2px 18px 0px rgba(0,0,0,0.5);
+    display: block;
+    }
+
+#specimenForm{ 
+    box-shadow: 2px 2px 18px 0px rgba(0,0,0,0.5);
+    display: block;
+    }
+
+#exampleModalLong{
+  background:  rgba(250, 233, 165, 0.5);
+}
+
+
