@@ -12,7 +12,7 @@
 
   <nav class="navbar navbar-expand-lg" style="background-color: rgba(250, 233, 165, 0.5); color: black;">
     <div class="container-fluid">
-      <a class="navbar-brand" href=#><img src="Resources/cropped-nhm-long-logo.png" width="220" height="20" alt="logo"></a>
+      <a class="navbar-brand" href=#><img src="Resources/MBHLogo.png" width="600" height="70" alt="logo"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -48,7 +48,7 @@
 <div class="container-md">
   <div class="row">
     <div class="col-md-9">
-      <h1 style="text-decoration-line: underline;">Specimen Log</h1>
+      <h2 style="text-decoration-line: underline;">Specimen Log</h2>
       <div class="card" id="SpecimenLog">
         <div class="table-responsive">
       <table class="table table-striped" >
@@ -116,11 +116,11 @@
           <input type="date" name="newArrivalDate" id="newArrivalDate" class="form-control" id="modalInput">
           <label for="newDescription" class="form-label">Description (Max 200 Characters): </label>
           <input name="newDescription" id="newDescription" class="form-control" id="modalInput">
+          <button type="button" id="modalclose1" class="btn btn-secondary" data-dismiss="modal" style="margin-top: 5px;">Close</button>
+        <button type="submit" class="btn btn-success" style="margin-top: 5px;">Save changes</button>
       </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" id="modalclose1" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success">Save changes</button>
+      <div class="modal-footer" id="modal-footer">
       </div>
     </div>
   </div>

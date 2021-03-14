@@ -2,6 +2,8 @@
 
 const table = document.getElementById("myTable");
 
+const indexPage = "http://localhost:8080/";
+
 let updateID = 0;
 
 var myModal = new bootstrap.Modal(document.getElementById('exampleModalLong'), {
@@ -11,7 +13,7 @@ var myModal = new bootstrap.Modal(document.getElementById('exampleModalLong'), {
 
 
 function getSpecimens(){
-    axios.get("http://localhost:8080/getSpecimens")
+    axios.get(indexPage + "getSpecimens")
     .then (res => {
         const specimens = res.data;
     table.innerHTML="";
@@ -72,7 +74,7 @@ function renderSpecimen(specimen){
 
 // delete function
 function deleteSpecimen(id) {
-    axios.delete("http://localhost:8080/removeSpecimen/" + id)
+    axios.delete(indexPage + "removeSpecimen/" + id)
     .then(() => getSpecimens())
     .catch(err => console.error(err));
 }
@@ -90,7 +92,7 @@ document.getElementById("specimenForm").addEventListener('submit', function(even
       description: this.description.value,
     };
 
-    axios.post("http://localhost:8080/createSpecimen", data, {
+    axios.post(indexPage + "createSpecimen", data, {
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
@@ -138,7 +140,7 @@ document.getElementById("specimenForm").addEventListener('submit', function(even
       description: this.newDescription.value
     }
 
-    axios.put("http://localhost:8080/updateSpecimen/" + updateID, newData)
+    axios.put(indexPage + "updateSpecimen/" + updateID, newData)
     .then(() => {
         getSpecimens();
     })
